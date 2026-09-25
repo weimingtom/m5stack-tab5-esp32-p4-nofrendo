@@ -8,7 +8,7 @@ Adding support for M5Stack Tab5 Keyboard (M5Tab5 Keyboard).
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
-* You need to use PSP2000 to format upan  
+* Sometimes, you need to use PSP2000 to format the tfcard    
 
 ## Input, Key Map
 * main/app_main.cpp, physical_keyboard_callback()
