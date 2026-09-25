@@ -18,6 +18,12 @@ Adding support for M5Stack Tab5 Keyboard (M5Tab5 Keyboard).
 * Z = A button = Z
 * X = B button = X
 
+## How to build with ESP-IDF 5.4.4
+* cmd
+* cd m5stack-tab5-esp32-p4-nofrendo/
+* idf.py build
+* idf.py build flash monitor  
+
 ## ESP-IDF 5.4.4, for Win10 and Win11
 * https://dl.espressif.cn/dl/esp-idf/
 * https://dl.espressif.com/dl/idf-installer/esp-idf-tools-setup-offline-5.4.4.exe
