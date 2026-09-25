@@ -6,6 +6,11 @@ Adding support for M5Stack Tab5 Keyboard (M5Tab5 Keyboard).
 * https://github.com/AndyAiCardputer/nes-tab5-usb-host
 * https://github.com/m5stack/M5Tab5-Keyboard-UserDemo
 
+## Other Ref
+* https://github.com/m5stack/M5Tab5-UserDemo
+* https://github.com/espressif/esp-bsp
+* https://github.com/espressif/esp-board-manager
+
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
 * Sometimes, you need to use PSP2000 to format the tfcard    
