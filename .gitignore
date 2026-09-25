@@ -1,13 +1,13 @@
 # Build files
 build/
-sdkconfig
-sdkconfig.old
+#sdkconfig
+#sdkconfig.old
 
 # Managed components (auto-downloaded)
-managed_components/
+#managed_components/
 
 # Dependencies lock (auto-generated)
-dependencies.lock
+#dependencies.lock
 
 # IDE files
 .vscode/
