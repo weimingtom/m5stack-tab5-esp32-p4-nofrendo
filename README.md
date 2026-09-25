@@ -18,7 +18,28 @@ Adding support for M5Stack Tab5 Keyboard (M5Tab5 Keyboard).
 * Z = A button = Z
 * X = B button = X
 
+## weibo record
+```
+我找到一个m5stack tab5 esp32-p4的nes模拟器开源项目AndyAiCardputer/nes-tab5-usb-host，
+我测试过用esp-idf v5.4可以编译，运行也可以（可以魔改代码跳过手柄输入，
+直接进入指定的nes后缀文件路径），运行效果不错，有声音输出，但无法输入，
+不支持官方的键盘，所以我打算看能不能融合M5Tab5-Keyboard-UserDemo的代码。
+原作者可能是故意不支持M5Tab5-Keyboard的
+
+AndyAiCardputer/nes-tab5-usb-host研究，我把这个nes模拟器改成用m5tab5的i2c键盘输入，
+但其实手感其实不是很好，还不如原版的usb-host手柄。需要解决几个问题：
+（1）怎么用m5_tab5_keyboard_component？放入components，
+修改CMakeLists.txt添加子目录，至于用法，其实类似于i2c，
+不过我用的是setKeyCallback传入callback函数
+（2）文件浏览器的按键，可以通过nes_input_state变量
+（3）nofrendo的按键，可以通过event_get()函数输入。
+有时间我会开源，作为研究其他esp32-p4模拟器的参考，
+因为它的声音按键屏幕都是齐全的
+```
+
 ## Original README.md
+
+-----------------------------
 
 # NES Emulator for M5Stack Tab5 with File Browser
 
