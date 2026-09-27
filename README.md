@@ -10,6 +10,7 @@ Adding support for M5Stack Tab5 Keyboard (M5Tab5 Keyboard).
 * https://github.com/m5stack/M5Tab5-UserDemo
 * https://github.com/espressif/esp-bsp
 * https://github.com/espressif/esp-board-manager
+* https://github.com/andjiang0083/retro-go-tab5
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
