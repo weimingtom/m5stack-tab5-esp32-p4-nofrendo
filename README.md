@@ -20,6 +20,8 @@ Adding support for M5Stack Tab5 Keyboard (M5Tab5 Keyboard).
 * https://www.oschina.net/p/esplay-retro-emulation
 * https://github.com/pebri86/esplay-retro-emulation  
 * https://hackaday.io/project/166707-esplay-micro
+* (TODO, not p4) https://github.com/fffonion/retro-go
+* (TODO, not p4, s31 tested) https://github.com/PIGEON-SOFT/retro-go-s31
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
