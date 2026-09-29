@@ -40,6 +40,7 @@ https://www.bilibili.com/video/BV1qKDPBaEcU/
 * (linux) https://github.com/nejidev/arm-NES-linux
 * https://burner.m5stack.com/device/tab5
 * https://github.com/gywan94/m5stack-tab5-nc1020
+* (TODO) https://github.com/georgik/esp-idf-component-SDL/blob/main/sdl/examples/bubble/sdkconfig.defaults.m5stack_tab5  
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
