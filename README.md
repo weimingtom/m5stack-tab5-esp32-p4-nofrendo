@@ -30,6 +30,7 @@ https://www.bilibili.com/video/BV1254y1U7Kf/
 https://www.bilibili.com/video/BV1qsc2z1Eo1/  
 https://gitee.com/esp32-g/DIJI-NES  
 https://www.bilibili.com/video/BV1qKDPBaEcU/  
+* https://github.com/weimingtom/wmt_link_collections_in_Chinese/blob/master/emulator.md  
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
