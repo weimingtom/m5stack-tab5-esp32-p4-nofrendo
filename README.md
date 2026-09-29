@@ -25,7 +25,11 @@ Adding support for M5Stack Tab5 Keyboard (M5Tab5 Keyboard).
 * (TODO, not p4) ESP32 esplay_micro游戏机全套资料.rar  
 开源ESP32模块游戏机《ESPlay Micro》刷引导程序教程（刷Bootloader教程）  
 https://www.bilibili.com/video/BV1254y1U7Kf/  
-* (TODO, not p4) ESPLAY_Micro.zip  
+* (TODO, not p4) ESPLAY_Micro.zip
+* (TODO, not p4) https://github.com/UF-Evan/DIJI-NES  
+https://www.bilibili.com/video/BV1qsc2z1Eo1/  
+https://gitee.com/esp32-g/DIJI-NES  
+https://www.bilibili.com/video/BV1qKDPBaEcU/  
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
