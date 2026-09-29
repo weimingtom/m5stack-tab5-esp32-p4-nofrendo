@@ -22,6 +22,10 @@ Adding support for M5Stack Tab5 Keyboard (M5Tab5 Keyboard).
 * https://hackaday.io/project/166707-esplay-micro
 * (TODO, not p4) https://github.com/fffonion/retro-go
 * (TODO, not p4, s31 tested) https://github.com/PIGEON-SOFT/retro-go-s31
+* (TODO, not p4) ESP32 esplay_micro游戏机全套资料.rar  
+开源ESP32模块游戏机《ESPlay Micro》刷引导程序教程（刷Bootloader教程）  
+https://www.bilibili.com/video/BV1254y1U7Kf/  
+* (TODO, not p4) ESPLAY_Micro.zip  
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
