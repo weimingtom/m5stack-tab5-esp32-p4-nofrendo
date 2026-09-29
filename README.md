@@ -43,7 +43,7 @@ https://www.bilibili.com/video/BV1qKDPBaEcU/
 * https://github.com/gywan94/m5stack-tab5-nc1020
 * (TODO) https://github.com/georgik/esp-idf-component-SDL/blob/main/sdl/examples/bubble/sdkconfig.defaults.m5stack_tab5
 * (TODO) https://github.com/georgik/esp-idf-component-SDL_bsp/blob/main/src/boards/esp_bsp_sdl_m5stack_tab5.c
-* HZK Chinese Font, simplewindow_v4.rar, HZK16, ASC  
+* HZK Chinese Font, simplewindow_v4.rar, HZK16, ASC, asc16, gb16song    
 ```
 以前模仿嵌入式课老师给的代码改的效果，simplewindow（我改的名字），亮点是——
 可以显示小型字体库，俗称HZK或ASC点阵字库，其实就是以前搞16位操作系统时候的古老显示字体方法——
