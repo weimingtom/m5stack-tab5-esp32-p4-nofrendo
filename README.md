@@ -31,6 +31,8 @@ https://www.bilibili.com/video/BV1qsc2z1Eo1/
 https://gitee.com/esp32-g/DIJI-NES  
 https://www.bilibili.com/video/BV1qKDPBaEcU/  
 * https://github.com/weimingtom/wmt_link_collections_in_Chinese/blob/master/emulator.md  
+* (TODO, Arduino, not p4) https://gitee.com/weimingtom2000/infones
+* (private) https://gitee.com/weimingtom2000/InfoNES-1
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
