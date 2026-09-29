@@ -35,6 +35,7 @@ https://www.bilibili.com/video/BV1qKDPBaEcU/
 * (private) https://gitee.com/weimingtom2000/InfoNES-1
 * (v3s) https://github.com/weimingtom/nofrendo_fork
 * (v3s) https://github.com/weimingtom/infones_fork
+* (v3s) https://github.com/weimingtom/gpsp_fork  
 * (stm32) https://github.com/Woody00h/InfoNES
 * (linux) https://github.com/yongzhena/infoNES
 * (linux) https://github.com/nejidev/arm-NES-linux
