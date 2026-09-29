@@ -48,6 +48,12 @@ https://www.bilibili.com/video/BV1qKDPBaEcU/
 以前模仿嵌入式课老师给的代码改的效果，simplewindow（我改的名字），亮点是——
 可以显示小型字体库，俗称HZK或ASC点阵字库，其实就是以前搞16位操作系统时候的古老显示字体方法——
 虽然对于嵌入式来说这种做法一点都不古老，毕竟嵌入式对内存要求更高 ​​​
+
+【UCDOS中的点阵字库HZK12,HZK16,HZK24,ASC12,ASC16(转)】 
+
+原文：
+http://cache.baidu.com/c?m=9f65cb4a8c8507ed4fece7631046893b4c4380147780914c34c3933fc239045c3738beee3a241706d9c67d6606ab540faaa16c2973543db799ca8c57dfbf8f2b2f9524367a1c874316c419d891007a9f
+http://zaazbb.blog.163.com/blog/static/1689785592013101842118932/​​
 ```
 
 ## tf card, roms/
