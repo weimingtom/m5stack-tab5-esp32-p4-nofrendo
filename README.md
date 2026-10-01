@@ -55,6 +55,9 @@ https://www.bilibili.com/video/BV1qKDPBaEcU/
 http://cache.baidu.com/c?m=9f65cb4a8c8507ed4fece7631046893b4c4380147780914c34c3933fc239045c3738beee3a241706d9c67d6606ab540faaa16c2973543db799ca8c57dfbf8f2b2f9524367a1c874316c419d891007a9f
 http://zaazbb.blog.163.com/blog/static/1689785592013101842118932/​​
 ```
+* https://wiki.lckfb.com/zh-hans/lspi/project/game-machine.html
+* https://gitee.com/lcsc/game-ex-base-code
+* https://gitee.com/lcsc/liangshan-pi-nes-game-console
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
