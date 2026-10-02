@@ -66,6 +66,13 @@ https://www.instructables.com/GB300-P4-a-ESP32-P4-Based-Retro-Handheld-Using-the
 * esp-box-emu  
 https://heypcb.ai/world/b/d874f3e3ac93   
 https://github.com/esp-cpp/esp-box-emu  
+* nes_td3s_v2_run_roms.rar, nes_td3s_v2_libraries.rar, nes_td3s_v1_run_success.rar
+* STM32_NES.rar
+* https://github.com/ilyamordasov/esp32-nesemu
+* https://github.com/gibobo/esp32-nesemu
+* https://github.com/espzav/esp32-nesemu
+* https://github.com/espzav/esp32-nesemu/tree/idf_5.0
+* https://github.com/espressif/esp32-nesemu
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
