@@ -63,6 +63,9 @@ http://zaazbb.blog.163.com/blog/static/1689785592013101842118932/​​
 * GB300  
 https://www.reddit.com/r/esp32/comments/1qj2rrr/my_gb300p4_handheld_esp32p4_running_retrogo/?tl=ja  
 https://www.instructables.com/GB300-P4-a-ESP32-P4-Based-Retro-Handheld-Using-the/  
+* esp-box-emu  
+https://heypcb.ai/world/b/d874f3e3ac93   
+https://github.com/esp-cpp/esp-box-emu  
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
