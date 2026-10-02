@@ -58,6 +58,8 @@ http://zaazbb.blog.163.com/blog/static/1689785592013101842118932/​​
 * (gd32) https://wiki.lckfb.com/zh-hans/lspi/project/game-machine.html
 * (gd32) https://gitee.com/lcsc/game-ex-base-code
 * (gd32) https://gitee.com/lcsc/liangshan-pi-nes-game-console
+* (TODO) https://github.com/ducalex/retro-go
+* (TODO) https://sourceforge.net/projects/retro-go.mirror
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
