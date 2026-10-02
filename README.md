@@ -10,7 +10,12 @@ Adding support for M5Stack Tab5 Keyboard (M5Tab5 Keyboard).
 * https://github.com/m5stack/M5Tab5-UserDemo
 * https://github.com/espressif/esp-bsp
 * https://github.com/espressif/esp-board-manager
-* (IMP, TODO, gba tested) https://github.com/andjiang0083/retro-go-tab5
+* (IMP, TODO, gba tested) https://github.com/andjiang0083/retro-go-tab5  
+https://github.com/andjiang0083/retro-go-tab5/tree/c64bee8819a27d6010e4795147221caa16457057  
+```
+我发现andjiang0083/retro-go-tab5这个项目用m5stack tab5跑retro-go的gba是可以玩的，
+我有可能有时间会fork一份代码魔改——不过暂时不需要 ​​​
+```
 * (TODO, not p4) https://github.com/mliangquan/esp32-nesgameconsole
 * (TODO, not p4) https://github.com/44670/44vba
 * https://gitee.com/weidongshan/rpi_pico_100ask_infones
