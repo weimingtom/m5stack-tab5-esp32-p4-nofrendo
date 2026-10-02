@@ -10,7 +10,7 @@ Adding support for M5Stack Tab5 Keyboard (M5Tab5 Keyboard).
 * https://github.com/m5stack/M5Tab5-UserDemo
 * https://github.com/espressif/esp-bsp
 * https://github.com/espressif/esp-board-manager
-* (TODO) https://github.com/andjiang0083/retro-go-tab5
+* (IMP, TODO, gba tested) https://github.com/andjiang0083/retro-go-tab5
 * (TODO, not p4) https://github.com/mliangquan/esp32-nesgameconsole
 * (TODO, not p4) https://github.com/44670/44vba
 * https://gitee.com/weidongshan/rpi_pico_100ask_infones
