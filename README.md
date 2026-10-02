@@ -60,6 +60,9 @@ http://zaazbb.blog.163.com/blog/static/1689785592013101842118932/​​
 * (gd32) https://gitee.com/lcsc/liangshan-pi-nes-game-console
 * (TODO) https://github.com/ducalex/retro-go
 * (TODO) https://sourceforge.net/projects/retro-go.mirror
+* GB300  
+https://www.reddit.com/r/esp32/comments/1qj2rrr/my_gb300p4_handheld_esp32p4_running_retrogo/?tl=ja  
+https://www.instructables.com/GB300-P4-a-ESP32-P4-Based-Retro-Handheld-Using-the/  
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
