@@ -78,6 +78,21 @@ https://github.com/esp-cpp/esp-box-emu
 * https://github.com/espzav/esp32-nesemu
 * https://github.com/espzav/esp32-nesemu/tree/idf_5.0
 * https://github.com/espressif/esp32-nesemu
+* https://github.com/mochimochi-man/np2_TAB5  
+Pia Carrot e Youkoso!!.hdi  
+(option) https://archive.org/download/bios_batocera/BatoceraV39Bios/bios/np2kai/  
+```
+把mochimochi-man/np2_TAB5跑通了，效果如图。运行的方法是
+（1）ESP32-P4烧录到0x0
+（2）给m5stack tab5接上键盘、usb电源、tf卡，
+如果接上键盘的话Num Lock键是没反应的，但其实是可以用
+（3）tf卡FAT32分区装入hdi文件，然后在开机后（要等几秒）按F11（相当于del键进入bios菜单）
+然后在bios菜单第三项选择hdi文件（我猜hdi后缀文件只能放在根目录），
+也允许设置BIOS.ROM和FONT.ROM，如果没有会用默认的
+（4）选最后一项RESET，然后会保存设置进入游戏。因为没有鼠标，可以用触摸屏代替鼠标。
+（5）对于这个游戏，一直回车到一个菜单，然后用触屏或方向键回车选头顶的story。
+感想：还没试过编译，可能没什么用，但键盘读取和鼠标读取的代码如果有的话可以拿来参考，移植到别的代码
+```
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
