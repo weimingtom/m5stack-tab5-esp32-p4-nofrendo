@@ -93,6 +93,9 @@ Pia Carrot e Youkoso!!.hdi
 （5）对于这个游戏，一直回车到一个菜单，然后用触屏或方向键回车选头顶的story。
 感想：还没试过编译，可能没什么用，但键盘读取和鼠标读取的代码如果有的话可以拿来参考，移植到别的代码
 ```
+* 立创实战派, 立创·实战派ESP32-S3  
+https://wiki.lckfb.com/zh-hans/szpi-esp32s3/open-source-software/  
+https://wiki.lckfb.com/zh-hans/szpi-esp32s3/beginner/game-console.html  
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
