@@ -60,9 +60,10 @@ https://www.bilibili.com/video/BV1qKDPBaEcU/
 http://cache.baidu.com/c?m=9f65cb4a8c8507ed4fece7631046893b4c4380147780914c34c3933fc239045c3738beee3a241706d9c67d6606ab540faaa16c2973543db799ca8c57dfbf8f2b2f9524367a1c874316c419d891007a9f
 http://zaazbb.blog.163.com/blog/static/1689785592013101842118932/​​
 ```
-* (gd32) https://wiki.lckfb.com/zh-hans/lspi/project/game-machine.html
-* (gd32) https://gitee.com/lcsc/game-ex-base-code
-* (gd32) https://gitee.com/lcsc/liangshan-pi-nes-game-console
+* 立创梁山派, 立创·梁山派GD32F470ZGT6   
+(gd32) https://wiki.lckfb.com/zh-hans/lspi/project/game-machine.html  
+(gd32) https://gitee.com/lcsc/game-ex-base-code  
+(gd32) https://gitee.com/lcsc/liangshan-pi-nes-game-console   
 * (TODO) https://github.com/ducalex/retro-go
 * (TODO) https://sourceforge.net/projects/retro-go.mirror
 * GB300  
