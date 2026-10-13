@@ -1,0 +1,4 @@
+# mkdir /mnt/SDCARD
+# mount /dev/mmcblk0p1 /mnt/SDCARD/
+# cd /mnt/SDCARD/nofrendo/
+# SDL_NOMOUSE=1 ./nofrendo ./DEMO.NES
