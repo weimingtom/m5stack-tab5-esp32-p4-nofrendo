@@ -26,10 +26,10 @@
 #ifndef _NES_MMC_H_
 #define _NES_MMC_H_
 
-#include "../libsnss/libsnss.h"
-#include "../sndhrdw/nes_apu.h"
+#include <libsnss.h>
+#include <nes_apu.h>
 
-#define MMC_LASTBANK -1
+#define  MMC_LASTBANK      -1
 
 typedef struct
 {
@@ -42,6 +42,7 @@ typedef struct
    uint32 min_range, max_range;
    void (*write_func)(uint32 address, uint8 value);
 } map_memwrite;
+
 
 typedef struct mapintf_s
 {
@@ -57,11 +58,12 @@ typedef struct mapintf_s
    apuext_t *sound_ext;
 } mapintf_t;
 
-#include "nes_rom.h"
+
+#include <nes_rom.h>
 typedef struct mmc_s
 {
    mapintf_t *intf;
-   rominfo_t *cart; /* link it back to the cart */
+   rominfo_t *cart;  /* link it back to the cart */
 } mmc_t;
 
 extern rominfo_t *mmc_getinfo(void);

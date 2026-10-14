@@ -26,31 +26,32 @@
 #ifndef _NES_H_
 #define _NES_H_
 
-#include "../noftypes.h"
-#include "../sndhrdw/nes_apu.h"
-#include "nes_mmc.h"
-#include "nes_ppu.h"
-#include "nes_rom.h"
-#include "../cpu/nes6502.h"
-#include "../bitmap.h"
+#include <noftypes.h>
+#include <nes_apu.h>
+#include <nes_mmc.h>
+#include <nes_ppu.h>
+#include <nes_rom.h>
+#include "nes6502.h"
+#include <bitmap.h>
 
-#define NES_SCREEN_WIDTH 256
-#define NES_SCREEN_HEIGHT 240
+#define  NES_SCREEN_WIDTH     256
+#define  NES_SCREEN_HEIGHT    240
 
 /* NTSC = 60Hz, PAL = 50Hz */
 #ifdef PAL
-#define NES_REFRESH_RATE 50
+#define  NES_REFRESH_RATE     50
 #else /* !PAL */
-#define NES_REFRESH_RATE 60
+#define  NES_REFRESH_RATE     60
 #endif /* !PAL */
 
-#define MAX_MEM_HANDLERS 32
+#define  MAX_MEM_HANDLERS     32
 
 enum
 {
    SOFT_RESET,
    HARD_RESET
 };
+
 
 typedef struct nes_s
 {
@@ -84,6 +85,7 @@ typedef struct nes_s
    bool pause;
 
 } nes_t;
+
 
 extern int nes_isourfile(const char *filename);
 

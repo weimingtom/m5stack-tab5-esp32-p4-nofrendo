@@ -26,19 +26,18 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
-#include "../noftypes.h"
-#include "../cpu/nes6502.h"
-#include "../log.h"
-#include "../osd.h"
-#include "../gui.h"
-#include "nes.h"
-#include "../sndhrdw/nes_apu.h"
-#include "nes_ppu.h"
-#include "nes_rom.h"
-#include "nes_mmc.h"
-#include "../vid_drv.h"
-#include "../nofrendo.h"
+#include <noftypes.h>
+#include "nes6502.h"
+#include <log.h>
+#include <osd.h>
+#include <gui.h>
+#include <nes.h>
+#include <nes_apu.h>
+#include <nes_ppu.h>
+#include <nes_rom.h>
+#include <nes_mmc.h>
+#include <vid_drv.h>
+#include <nofrendo.h>
 
 #ifdef ESP_PLATFORM
 #include "esp_task_wdt.h"
@@ -46,15 +45,15 @@
 #include "freertos/task.h"
 #endif
 
-#define NES_CLOCK_DIVIDER 12
+#define  NES_CLOCK_DIVIDER    12
 //#define  NES_MASTER_CLOCK     21477272.727272727272
-#define NES_MASTER_CLOCK (236250000 / 11)
-#define NES_SCANLINE_CYCLES (1364.0 / NES_CLOCK_DIVIDER)
-#define NES_FIQ_PERIOD (NES_MASTER_CLOCK / NES_CLOCK_DIVIDER / 60)
+#define  NES_MASTER_CLOCK     (236250000 / 11)
+#define  NES_SCANLINE_CYCLES  (1364.0 / NES_CLOCK_DIVIDER)
+#define  NES_FIQ_PERIOD       (NES_MASTER_CLOCK / NES_CLOCK_DIVIDER / 60)
 
-#define NES_RAMSIZE 0x800
+#define  NES_RAMSIZE          0x800
 
-#define NES_SKIP_LIMIT (NES_REFRESH_RATE / 5) /* 12 or 10, depending on PAL/NTSC */
+#define  NES_SKIP_LIMIT       (NES_REFRESH_RATE / 5)   /* 12 or 10, depending on PAL/NTSC */
 
 static nes_t nes;
 
@@ -117,34 +116,33 @@ static uint8 read_protect(uint32 address)
    return 0xFF;
 }
 
-#define LAST_MEMORY_HANDLER \
-   {                        \
-      -1, -1, NULL          \
-   }
+#define  LAST_MEMORY_HANDLER  { -1, -1, NULL }
 /* read/write handlers for standard NES */
 static nes6502_memread default_readhandler[] =
-    {
-        {0x0800, 0x1FFF, ram_read},
-        {0x2000, 0x3FFF, ppu_read},
-        {0x4000, 0x4015, apu_read},
-        {0x4016, 0x4017, ppu_readhigh},
-        LAST_MEMORY_HANDLER};
+{
+   { 0x0800, 0x1FFF, ram_read },
+   { 0x2000, 0x3FFF, ppu_read },
+   { 0x4000, 0x4015, apu_read },
+   { 0x4016, 0x4017, ppu_readhigh },
+   LAST_MEMORY_HANDLER
+};
 
 static nes6502_memwrite default_writehandler[] =
-    {
-        {0x0800, 0x1FFF, ram_write},
-        {0x2000, 0x3FFF, ppu_write},
-        {0x4000, 0x4013, apu_write},
-        {0x4015, 0x4015, apu_write},
-        {0x4014, 0x4017, ppu_writehigh},
-        LAST_MEMORY_HANDLER};
+{
+   { 0x0800, 0x1FFF, ram_write },
+   { 0x2000, 0x3FFF, ppu_write },
+   { 0x4000, 0x4013, apu_write },
+   { 0x4015, 0x4015, apu_write },
+   { 0x4014, 0x4017, ppu_writehigh },
+   LAST_MEMORY_HANDLER
+};
 
 /* this big nasty boy sets up the address handlers that the CPU uses */
 static void build_address_handlers(nes_t *machine)
 {
    int count, num_handlers = 0;
    mapintf_t *intf;
-
+   
    ASSERT(machine);
    intf = machine->mmc->intf;
 
@@ -280,7 +278,7 @@ static uint8 nes_clearfiq(void)
 void nes_setfiq(uint8 value)
 {
    nes.fiq_state = value;
-   nes.fiq_cycles = (int)NES_FIQ_PERIOD;
+   nes.fiq_cycles = (int) NES_FIQ_PERIOD;
 }
 
 static void nes_checkfiq(int cycles)
@@ -288,7 +286,7 @@ static void nes_checkfiq(int cycles)
    nes.fiq_cycles -= cycles;
    if (nes.fiq_cycles <= 0)
    {
-      nes.fiq_cycles += (int)NES_FIQ_PERIOD;
+      nes.fiq_cycles += (int) NES_FIQ_PERIOD;
       if (0 == (nes.fiq_state & 0xC0))
       {
          nes.fiq_occurred = true;
@@ -328,14 +326,14 @@ static void nes_renderframe(bool draw_flag)
          if (mapintf->vblank)
             mapintf->vblank();
          in_vblank = 1;
-      }
+      } 
 
       if (mapintf->hblank)
          mapintf->hblank(in_vblank);
 
-      nes.scanline_cycles += (float)NES_SCANLINE_CYCLES;
-      elapsed_cycles = nes6502_execute((int)nes.scanline_cycles);
-      nes.scanline_cycles -= (float)elapsed_cycles;
+      nes.scanline_cycles += (float) NES_SCANLINE_CYCLES;
+      elapsed_cycles = nes6502_execute((int) nes.scanline_cycles);
+      nes.scanline_cycles -= (float) elapsed_cycles;
       nes_checkfiq(elapsed_cycles);
 
       ppu_endscanline(nes.scanline);
@@ -419,7 +417,8 @@ void nes_emulate(void)
          vTaskDelay(1);
 #endif
       }
-      else if ((1 == frames_to_render && true == nes.autoframeskip) || false == nes.autoframeskip)
+      else if ((1 == frames_to_render && true == nes.autoframeskip)
+               || false == nes.autoframeskip)
       {
          frames_to_render = 0;
          nes_renderframe(true);
@@ -450,7 +449,7 @@ static void mem_trash(uint8 *buffer, int length)
    int i;
 
    for (i = 0; i < length; i++)
-      buffer[i] = (uint8)rand();
+      buffer[i] = (uint8) rand();
 }
 
 /* Reset NES hardware */
@@ -470,7 +469,7 @@ void nes_reset(int reset_type)
 
    nes.scanline = 241;
 
-   gui_sendmsg(GUI_GREEN, "NES %s",
+   gui_sendmsg(GUI_GREEN, "NES %s", 
                (HARD_RESET == reset_type) ? "powered on" : "reset");
 }
 
@@ -534,9 +533,9 @@ int nes_insertcart(const char *filename, nes_t *machine)
    /* if there's VRAM, let the PPU know */
    if (NULL != machine->rominfo->vram)
       machine->ppu->vram_present = true;
-
+   
    apu_setext(machine->apu, machine->mmc->intf->sound_ext);
-
+   
    build_address_handlers(machine);
 
    nes_setcontext(machine);
@@ -548,6 +547,7 @@ _fail:
    nes_destroy(&machine);
    return -1;
 }
+
 
 /* Initialize NES CPU, hardware, etc. */
 nes_t *nes_create(void)

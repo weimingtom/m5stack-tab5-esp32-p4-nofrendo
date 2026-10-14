@@ -32,40 +32,41 @@
 
 #include <stdio.h>
 #include <string.h>
-
-#include "../noftypes.h"
-#include "nes_rom.h"
-#include "../intro.h"
-#include "nes_mmc.h"
-#include "nes_ppu.h"
-#include "nes.h"
-#include "../gui.h"
-#include "../log.h"
-#include "../osd.h"
+#include <noftypes.h>
+#include <nes_rom.h>
+#include <intro.h>
+#include <nes_mmc.h>
+#include <nes_ppu.h>
+#include <nes.h>
+#include <gui.h>
+#include <log.h>
+#include <osd.h>
 
 extern const uint8_t* _get_rom_ptr(void);
 extern size_t         _get_rom_size(void);
 extern void osd_set_sram_ptr(uint8_t *ptr, size_t len);
 
 /* Max length for displayed filename */
-#define ROM_DISP_MAXLEN 20
+#define  ROM_DISP_MAXLEN   20
+
 
 #ifdef ZLIB
 #include <zlib.h>
-#define _fopen gzopen
-#define _fclose gzclose
-#define _fread(B, N, L, F) gzread((F), (B), (L) * (N))
+#define  _fopen            gzopen
+#define  _fclose           gzclose
+#define  _fread(B,N,L,F)   gzread((F),(B),(L)*(N))
 #else
-#define _fopen fopen
-#define _fclose fclose
-#define _fread(B, N, L, F) fread((B), (N), (L), (F))
+#define  _fopen            fopen
+#define  _fclose           fclose
+#define  _fread(B,N,L,F)   fread((B),(N),(L),(F))
 #endif
 
-#define ROM_FOURSCREEN 0x08
-#define ROM_TRAINER 0x04
-#define ROM_BATTERY 0x02
-#define ROM_MIRRORTYPE 0x01
-#define ROM_INES_MAGIC "NES\x1A"
+#define  ROM_FOURSCREEN    0x08
+#define  ROM_TRAINER       0x04
+#define  ROM_BATTERY       0x02
+#define  ROM_MIRRORTYPE    0x01
+#define  ROM_INES_MAGIC    "NES\x1A"
+
 
 typedef struct inesheader_s
 {
@@ -77,15 +78,16 @@ typedef struct inesheader_s
    uint8 reserved[8];
 } __attribute__((packed)) inesheader_t;
 
-#define TRAINER_OFFSET 0x1000
-#define TRAINER_LENGTH 0x200
-#define VRAM_LENGTH 0x2000
 
-#define ROM_BANK_LENGTH 0x4000
-#define VROM_BANK_LENGTH 0x2000
+#define  TRAINER_OFFSET    0x1000
+#define  TRAINER_LENGTH    0x200
+#define  VRAM_LENGTH       0x2000
 
-#define SRAM_BANK_LENGTH 0x0400
-#define VRAM_BANK_LENGTH 0x2000
+#define  ROM_BANK_LENGTH   0x4000
+#define  VROM_BANK_LENGTH  0x2000
+
+#define  SRAM_BANK_LENGTH  0x0400
+#define  VRAM_BANK_LENGTH  0x2000
 
 /* Save battery-backed RAM */
 static void rom_savesram(rominfo_t *rominfo)
@@ -167,8 +169,8 @@ static void rom_loadtrainer(FILE *fp, rominfo_t *rominfo)
 
 static int rom_loadrom(FILE *fp, rominfo_t *rominfo)
 {
-    ASSERT(fp);
-    ASSERT(rominfo);
+   ASSERT(fp);
+   ASSERT(rominfo);
 
     /* --- HACK XIP: if the ROM is mapped in flash, don't allocate anything, just point to it --- */
     {
@@ -205,23 +207,31 @@ static int rom_loadrom(FILE *fp, rominfo_t *rominfo)
     }
 
     /* fallback RAM */
-    rominfo->rom = mem_alloc(rominfo->rom_banks * ROM_BANK_LENGTH, false);
-    if (NULL == rominfo->rom) {
-        gui_sendmsg(GUI_RED, "Could not allocate space for ROM image");
-        return -1;
-    }
-    _fread(rominfo->rom, ROM_BANK_LENGTH, rominfo->rom_banks, fp);
+   /* Allocate ROM space, and load it up! */	
+   rominfo->rom = mem_alloc(rominfo->rom_banks * ROM_BANK_LENGTH, false);
+   if (NULL == rominfo->rom)
+   {
+      gui_sendmsg(GUI_RED, "Could not allocate space for ROM image");
+      return -1;
+   }
+   _fread(rominfo->rom, ROM_BANK_LENGTH, rominfo->rom_banks, fp);
 
-    if (rominfo->vrom_banks) {
+   /* If there's VROM, allocate and stuff it in */
+   if (rominfo->vrom_banks)
+   {
         rominfo->vrom = mem_alloc(rominfo->vrom_banks * VROM_BANK_LENGTH, false);
-        if (NULL == rominfo->vrom) {
+        if (NULL == rominfo->vrom)
+        {
             gui_sendmsg(GUI_RED, "Could not allocate space for VROM");
             return -1;
         }
         _fread(rominfo->vrom, VROM_BANK_LENGTH, rominfo->vrom_banks, fp);
-    } else {
+   }
+   else
+   {
         rominfo->vram = NOFRENDO_MALLOC(VRAM_LENGTH);
-        if (NULL == rominfo->vram) {
+        if (NULL == rominfo->vram)
+        {
             gui_sendmsg(GUI_RED, "Could not allocate space for VRAM");
             return -1;
         }
@@ -294,7 +304,7 @@ static FILE *rom_findrom(const char *filename, rominfo_t *rominfo)
 static int rom_adddirty(char *filename)
 {
 #ifdef NOFRENDO_DEBUG
-#define MAX_BUFFER_LENGTH 255
+#define  MAX_BUFFER_LENGTH    255
    char buffer[MAX_BUFFER_LENGTH + 1];
    bool found = false;
 
@@ -441,7 +451,7 @@ char *rom_getinfo(rominfo_t *rominfo)
    sprintf(temp, " [%d] %dk/%dk %c", rominfo->mapper_number,
            rominfo->rom_banks * 16, rominfo->vrom_banks * 8,
            (rominfo->mirror == MIRROR_VERT) ? 'V' : 'H');
-
+   
    /* Stick it on there! */
    strncat(info, temp, PATH_MAX - strlen(info));
 

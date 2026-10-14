@@ -23,10 +23,10 @@
 ** $Id: map085.c,v 1.3 2001/05/06 01:42:03 neil Exp $
 */
 
-#include "../noftypes.h"
-#include "../nes/nes_mmc.h"
-#include "../nes/nes.h"
-#include "../log.h"
+#include <noftypes.h>
+#include <nes_mmc.h>
+#include <nes.h>
+#include <log.h>
 
 static struct
 {
@@ -151,15 +151,16 @@ static void map85_hblank(int vblank)
 }
 
 static map_memwrite map85_memwrite[] =
-    {
-        {0x8000, 0xFFFF, map85_write},
-        {-1, -1, NULL}};
+{
+   { 0x8000, 0xFFFF, map85_write },
+   {     -1,     -1, NULL }
+};
 
 static void map85_init(void)
 {
    mmc_bankrom(16, 0x8000, 0);
    mmc_bankrom(16, 0xC000, MMC_LASTBANK);
-
+   
    mmc_bankvrom(8, 0x0000, 0);
 
    irq.counter = irq.latch = 0;
@@ -167,18 +168,19 @@ static void map85_init(void)
    irq.enabled = false;
 }
 
-mapintf_t map85_intf =
-    {
-        85,             /* mapper number */
-        "Konami VRC7",  /* mapper name */
-        map85_init,     /* init routine */
-        NULL,           /* vblank callback */
-        map85_hblank,   /* hblank callback */
-        NULL,           /* get state (snss) */
-        NULL,           /* set state (snss) */
-        NULL,           /* memory read structure */
-        map85_memwrite, /* memory write structure */
-        NULL};
+mapintf_t map85_intf = 
+{
+   85, /* mapper number */
+   "Konami VRC7", /* mapper name */
+   map85_init, /* init routine */
+   NULL, /* vblank callback */
+   map85_hblank, /* hblank callback */
+   NULL, /* get state (snss) */
+   NULL, /* set state (snss) */
+   NULL, /* memory read structure */
+   map85_memwrite, /* memory write structure */
+   NULL
+};
 
 /*
 ** $Log: map085.c,v $

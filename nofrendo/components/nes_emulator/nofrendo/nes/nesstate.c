@@ -30,18 +30,17 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <noftypes.h>
+#include <nesstate.h>
+#include <gui.h>
+#include <nes.h>
+#include <log.h>
+#include <osd.h>
+#include <libsnss.h>
+#include "nes6502.h"
 
-#include "../noftypes.h"
-#include "nesstate.h"
-#include "../gui.h"
-#include "nes.h"
-#include "../log.h"
-#include "../osd.h"
-#include "../libsnss/libsnss.h"
-#include "../cpu/nes6502.h"
-
-#define FIRST_STATE_SLOT 0
-#define LAST_STATE_SLOT 9
+#define  FIRST_STATE_SLOT  0
+#define  LAST_STATE_SLOT   9
 
 static int state_slot = FIRST_STATE_SLOT;
 
@@ -49,7 +48,8 @@ static int state_slot = FIRST_STATE_SLOT;
 void state_setslot(int slot)
 {
    /* Don't send a message if we're already at that slot */
-   if (state_slot != slot && slot >= FIRST_STATE_SLOT && slot <= LAST_STATE_SLOT)
+   if (state_slot != slot && slot >= FIRST_STATE_SLOT
+       && slot <= LAST_STATE_SLOT)
    {
       state_slot = slot;
       gui_sendmsg(GUI_WHITE, "State slot set to %d", slot);
@@ -227,7 +227,7 @@ static int save_mapperblock(nes_t *state, SNSS_FILE *snssFile)
 static void load_baseblock(nes_t *state, SNSS_FILE *snssFile)
 {
    int i;
-
+   
    ASSERT(state);
 
    nes6502_getcontext(state->cpu);
@@ -250,12 +250,12 @@ static void load_baseblock(nes_t *state, SNSS_FILE *snssFile)
 
    /* TODO: argh, this is to handle nofrendo's filthy sprite priority method */
    for (i = 0; i < 8; i++)
-      state->ppu->palette[i << 2] = state->ppu->palette[0] | 0x80; //BG_TRANS_MASK;
+      state->ppu->palette[i << 2] = state->ppu->palette[0] | 0x80;//BG_TRANS_MASK;
 
    for (i = 0; i < 4; i++)
    {
       state->ppu->page[i + 8] = state->ppu->page[i + 12] =
-          state->ppu->nametab + (snssFile->baseBlock.mirrorState[i] * 0x400) - (0x2000 + (i * 0x400));
+         state->ppu->nametab + (snssFile->baseBlock.mirrorState[i] * 0x400) - (0x2000 + (i * 0x400));
    }
 
    state->ppu->vaddr = snssFile->baseBlock.vramAddress;
@@ -271,8 +271,8 @@ static void load_baseblock(nes_t *state, SNSS_FILE *snssFile)
 
    ppu_write(PPU_CTRL0, state->ppu->ctrl0);
    ppu_write(PPU_CTRL1, state->ppu->ctrl1);
-   ppu_write(PPU_VADDR, (uint8)(state->ppu->vaddr >> 8));
-   ppu_write(PPU_VADDR, (uint8)(state->ppu->vaddr & 0xFF));
+   ppu_write(PPU_VADDR, (uint8) (state->ppu->vaddr >> 8));
+   ppu_write(PPU_VADDR, (uint8) (state->ppu->vaddr & 0xFF));
 }
 
 static void load_vramblock(nes_t *state, SNSS_FILE *snssFile)
@@ -314,7 +314,7 @@ static void load_soundblock(nes_t *state, SNSS_FILE *snssFile)
 static void load_mapperblock(nes_t *state, SNSS_FILE *snssFile)
 {
    int i;
-
+   
    ASSERT(state);
 
    mmc_getcontext(state->mmc);
@@ -341,6 +341,7 @@ static void load_mapperblock(nes_t *state, SNSS_FILE *snssFile)
    mmc_setcontext(state->mmc);
 }
 
+
 int state_save(void)
 {
    SNSS_FILE *snssFile;
@@ -351,10 +352,10 @@ int state_save(void)
    /* get the pointer to our NES machine context */
    machine = nes_getcontextptr();
    ASSERT(machine);
-
+   
    /* build our filename using the image's name and the slot number */
    strncpy(fn, machine->rominfo->filename, PATH_MAX - 4);
-
+   
    ASSERT(state_slot >= FIRST_STATE_SLOT && state_slot <= LAST_STATE_SLOT);
    sprintf(ext, ".ss%d", state_slot);
    osd_newextension(fn, ext);
@@ -433,7 +434,7 @@ int state_load(void)
    ASSERT(state_slot >= FIRST_STATE_SLOT && state_slot <= LAST_STATE_SLOT);
    sprintf(ext, ".ss%d", state_slot);
    osd_newextension(fn, ext);
-
+   
    /* open our file for writing */
    status = SNSS_OpenFile(&snssFile, fn, SNSS_OPEN_READ);
    if (SNSS_OK != status)
@@ -463,19 +464,19 @@ int state_load(void)
       case SNSS_SRAM:
          load_sramblock(machine, snssFile);
          break;
-
+      
       case SNSS_MPRD:
          load_mapperblock(machine, snssFile);
          break;
-
+      
       case SNSS_CNTR:
          load_controllerblock(machine, snssFile);
          break;
-
+      
       case SNSS_SOUN:
          load_soundblock(machine, snssFile);
          break;
-
+      
       case SNSS_UNKNOWN_BLOCK:
       default:
          nofrendo_log_printf("unknown SNSS block type\n");

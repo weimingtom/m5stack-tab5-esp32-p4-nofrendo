@@ -23,8 +23,8 @@
 ** $Id: memguard.h,v 1.1.1.1 2001/04/27 07:03:54 neil Exp $
 */
 
-#ifndef _MEMGUARD_H_
-#define _MEMGUARD_H_
+#ifndef  _MEMGUARD_H_
+#define  _MEMGUARD_H_
 
 #include <stdbool.h>
 
@@ -53,13 +53,14 @@ extern char *_my_strdup(const char *string);
 
 #endif /* !NOFRENDO_DEBUG */
 
+
 extern void mem_cleanup(void);
 extern void mem_checkblocks(void);
 extern void mem_checkleaks(void);
 
 extern bool mem_debug;
 
-#endif /* _MEMGUARD_H_ */
+#endif   /* _MEMGUARD_H_ */
 
 /*
 ** $Log: memguard.h,v $

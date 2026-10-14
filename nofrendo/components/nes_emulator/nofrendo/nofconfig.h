@@ -5,8 +5,8 @@
 ** $Id: nofconfig.h,v 1.1 2001/04/27 14:37:11 neil Exp $
 */
 
-#ifndef _NOFCONFIG_H_
-#define _NOFCONFIG_H_
+#ifndef _CONFIG_H_
+#define _CONFIG_H_
 
 #include <stdbool.h>
 
@@ -23,7 +23,7 @@ typedef struct config_s
    ** open returns true on success, false otherwise.
    */
    bool (*open)(void);
-
+      
    /* close saves the current configuration to disk.
    **
    ** close must be the last config function called.
@@ -41,7 +41,7 @@ typedef struct config_s
    ** If the specified "key" does not exist, the "def"ault is returned
    */
    const char *(*read_string)(const char *group, const char *key, const char *def);
-
+      
    void (*write_int)(const char *group, const char *key, int value);
    void (*write_string)(const char *group, const char *key, const char *value);
    char *filename;
@@ -49,7 +49,7 @@ typedef struct config_s
 
 extern config_t config;
 
-#endif /* _NOFCONFIG_H_ */
+#endif /* !_CONFIG_H_ */
 
 /*
 ** $Log: nofconfig.h,v $

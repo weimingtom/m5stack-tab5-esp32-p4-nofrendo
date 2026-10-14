@@ -25,24 +25,24 @@
 ** $Id: memguard.c,v 1.2 2001/04/27 14:37:11 neil Exp $
 */
 
+#include <noftypes.h>
+#include <memguard.h>
+
 #include <string.h>
 #include <stdlib.h>
-
-#include "noftypes.h"
-#include "memguard.h"
-#include "log.h"
+#include <log.h>
 #include "osd.h"  // For mem_alloc declaration
 
 /* Maximum number of allocated blocks at any one time */
-#define MAX_BLOCKS 4096
+#define  MAX_BLOCKS        4096
 
 /* Memory block structure */
 typedef struct memblock_s
 {
-   void *block_addr;
-   int block_size;
-   char *file_name;
-   int line_num;
+   void  *block_addr;
+   int   block_size;
+   char  *file_name;
+   int   line_num;
 } memblock_t;
 
 /* debugging flag */
@@ -54,11 +54,12 @@ bool mem_debug = false;
 
 #ifdef NOFRENDO_DEBUG
 
-static int mem_blockcount = 0; /* allocated block count */
+static int mem_blockcount = 0;   /* allocated block count */
 static memblock_t *mem_record = NULL;
 
-#define GUARD_STRING "GgUuAaRrDdSsTtRrIiNnGgBbLlOoCcKk"
+#define  GUARD_STRING   "GgUuAaRrDdSsTtRrIiNnGgBbLlOoCcKk"
 #define GUARD_LENGTH 32 /* before and after allocated block */
+
 
 /*
 ** Check the memory guard to make sure out of bounds writes have not
@@ -70,11 +71,11 @@ static int mem_checkguardblock(void *data, int guard_size)
    int i, alloc_size;
 
    /* get the original pointer */
-   block = ((char *)data) - guard_size;
+   block = ((char *) data) - guard_size;
 
    /* get the size */
-   alloc_size = *((uint32 *)block);
-   block += 4;
+   alloc_size = *((uint32 *) block);
+   block+=4;
 
    /* check leading guard string */
    check = GUARD_STRING;
@@ -83,14 +84,14 @@ static int mem_checkguardblock(void *data, int guard_size)
       /* wrap */
       if ('\0' == *check)
          check = GUARD_STRING;
-
+      
       if (*block++ != *check++)
          return -1;
    }
 
    /* check end of block */
    check = GUARD_STRING;
-   block = ((char *)data) + alloc_size;
+   block = ((char *) data) + alloc_size;
    for (i = 0; i < guard_size; i++)
    {
       /* wrap */
@@ -107,7 +108,7 @@ static int mem_checkguardblock(void *data, int guard_size)
 /* free a guard block */
 static void mem_freeguardblock(void *data, int guard_size)
 {
-   char *orig = ((char *)data) - guard_size;
+   char *orig = ((char *) data) - guard_size;
 
    free(orig);
 }
@@ -129,19 +130,19 @@ static void *mem_guardalloc(int alloc_size, int guard_size)
    if (NULL == orig)
       return NULL;
 
-   block = (char *)orig;
-
+   block = (char *) orig;
+   
    /* get it to the pointer we will actually return */
-   orig = (void *)((char *)orig + guard_size);
+   orig = (void *) ((char *) orig + guard_size);
 
    /* trash it all */
-   ptr = (uint32 *)orig;
+   ptr = (uint32 *) orig;
    for (i = alloc_size / 4; i; i--)
       *ptr++ = 0xDEADBEEF;
-
+   
    /* store the size of the newly allocated block*/
-   *((uint32 *)block) = alloc_size;
-   block += 4;
+   *((uint32 *) block) = alloc_size;
+	block+=4;
 
    /* put guard string at beginning of block */
    check = GUARD_STRING;
@@ -156,18 +157,19 @@ static void *mem_guardalloc(int alloc_size, int guard_size)
 
    /* put at end of block */
    check = GUARD_STRING;
-   block = (char *)orig + alloc_size;
+   block = (char *) orig + alloc_size;
    for (i = 0; i < guard_size; i++)
    {
       /* wrap */
       if ('\0' == *check)
          check = GUARD_STRING;
-
+      
       *block++ = *check++;
    }
 
    return orig;
 }
+
 
 /* Free up the space used by the memory block manager */
 void mem_cleanup(void)
@@ -179,6 +181,7 @@ void mem_cleanup(void)
    }
 }
 
+
 /* Allocate a bunch of memory to keep track of all memory blocks */
 static void mem_init(void)
 {
@@ -188,10 +191,10 @@ static void mem_init(void)
 
    // mem_record = malloc(MAX_BLOCKS * sizeof(memblock_t));
    mem_record = mem_alloc(MAX_BLOCKS * sizeof(memblock_t), false);
-
    ASSERT(mem_record);
    memset(mem_record, 0, MAX_BLOCKS * sizeof(memblock_t));
 }
+
 
 /* add a block of memory to the master record */
 static void mem_addblock(void *data, int block_size, char *file, int line)
@@ -226,7 +229,7 @@ static void mem_deleteblock(void *data, char *file, int line)
          if (mem_checkguardblock(mem_record[i].block_addr, GUARD_LENGTH))
          {
             sprintf(fail, "mem_deleteblock 0x%08X at line %d of %s -- block corrupt",
-                    (uint32)data, line, file);
+                    (uint32) data, line, file);
             ASSERT_MSG(fail);
          }
 
@@ -236,7 +239,7 @@ static void mem_deleteblock(void *data, char *file, int line)
    }
 
    sprintf(fail, "mem_deleteblock 0x%08X at line %d of %s -- block not found",
-           (uint32)data, line, file);
+           (uint32) data, line, file);
    ASSERT_MSG(fail);
 }
 #endif /* NOFRENDO_DEBUG */
@@ -315,7 +318,7 @@ char *_my_strdup(const char *string, char *file, int line)
    if (NULL == string)
       return NULL;
 
-   temp = (char *)_my_malloc(strlen(string) + 1, file, line);
+   temp = (char *) _my_malloc(strlen(string) + 1, file, line);
    if (NULL == temp)
       return NULL;
 
@@ -367,7 +370,7 @@ char *_my_strdup(const char *string)
       return NULL;
 
    /* will ASSERT for us */
-   temp = (char *)_my_malloc(strlen(string) + 1);
+   temp = (char *) _my_malloc(strlen(string) + 1);
    if (NULL == temp)
       return NULL;
 
@@ -390,20 +393,19 @@ void mem_checkleaks(void)
    if (mem_blockcount)
    {
       nofrendo_log_printf("memory leak - %d unfreed block%s\n\n", mem_blockcount,
-                          mem_blockcount == 1 ? "" : "s");
+         mem_blockcount == 1 ? "" : "s");
 
       for (i = 0; i < MAX_BLOCKS; i++)
       {
          if (mem_record[i].block_addr)
          {
             nofrendo_log_printf("addr: 0x%08X, size: %d, line %d of %s%s\n",
-                                (uint32)mem_record[i].block_addr,
-                                mem_record[i].block_size,
-                                mem_record[i].line_num,
-                                mem_record[i].file_name,
-                                (mem_checkguardblock(mem_record[i].block_addr, GUARD_LENGTH))
-                                    ? " -- block corrupt"
-                                    : "");
+                    (uint32) mem_record[i].block_addr,
+                    mem_record[i].block_size,
+                    mem_record[i].line_num,
+                    mem_record[i].file_name,
+                    (mem_checkguardblock(mem_record[i].block_addr, GUARD_LENGTH))
+                    ? " -- block corrupt" : "");
          }
       }
    }
@@ -427,10 +429,10 @@ void mem_checkblocks(void)
          if (mem_checkguardblock(mem_record[i].block_addr, GUARD_LENGTH))
          {
             nofrendo_log_printf("addr: 0x%08X, size: %d, line %d of %s -- block corrupt\n",
-                                (uint32)mem_record[i].block_addr,
-                                mem_record[i].block_size,
-                                mem_record[i].line_num,
-                                mem_record[i].file_name);
+                    (uint32) mem_record[i].block_addr,
+                    mem_record[i].block_size,
+                    mem_record[i].line_num,
+                    mem_record[i].file_name);
          }
       }
    }

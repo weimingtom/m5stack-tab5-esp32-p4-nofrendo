@@ -31,16 +31,15 @@
 
 #include <stdio.h>
 #include <string.h>
-
-#include "noftypes.h"
-#include "bitmap.h"
+#include <noftypes.h>
+#include <bitmap.h>
 
 void bmp_clear(const bitmap_t *bitmap, uint8 color)
 {
    memset(bitmap->data, color, bitmap->pitch * bitmap->height);
 }
 
-static bitmap_t *_make_bitmap(uint8 *data_addr, bool hw, int width,
+static bitmap_t *_make_bitmap(uint8 *data_addr, bool hw, int width, 
                               int height, int pitch, int overdraw)
 {
    bitmap_t *bitmap;
@@ -84,8 +83,10 @@ static bitmap_t *_make_bitmap(uint8 *data_addr, bool hw, int width,
 /* Allocate and initialize a bitmap structure */
 bitmap_t *bmp_create(int width, int height, int overdraw)
 {
-    uint8 *addr;
-    int pitch = width + (overdraw * 2);   // left + right
+   uint8 *addr;
+   int pitch;
+
+   pitch = width + (overdraw * 2); /* left and right */ // left + right
 
     // Suralloc verticale
     enum { EXTRA_GUARD_ROWS = 16 };
@@ -93,7 +94,8 @@ bitmap_t *bmp_create(int width, int height, int overdraw)
     size_t alloc_bytes = (size_t)pitch * (size_t)alloc_height;
 
     addr = NOFRENDO_MALLOC((alloc_bytes + 7) & ~7);  // alignement 8
-    if (!addr) return NULL;
+   if (NULL == addr)
+      return NULL;
 
     return _make_bitmap(addr, false, width, height, pitch, overdraw);
 }

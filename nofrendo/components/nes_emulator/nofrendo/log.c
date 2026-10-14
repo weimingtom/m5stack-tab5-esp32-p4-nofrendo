@@ -26,9 +26,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>
-
-#include "noftypes.h"
-#include "log.h"
+#include <noftypes.h>
+#include <log.h>
 
 #ifdef NOFRENDO_LOG_TO_FILE
 static FILE *errorlog = NULL;
@@ -99,7 +98,7 @@ int nofrendo_log_printf(const char *format, ...)
    return 0; /* should be number of chars written */
 }
 
-#else  /* !NOFRENDO_DEBUG */
+#else /* !NOFRENDO_DEBUG */
 
 int nofrendo_log_init(void)
 {

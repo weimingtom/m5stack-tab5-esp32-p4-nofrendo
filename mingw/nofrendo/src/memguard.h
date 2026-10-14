@@ -40,7 +40,7 @@ extern void *_my_malloc(int size, char *file, int line);
 extern void _my_free(void **data, char *file, int line);
 extern char *_my_strdup(const char *string, char *file, int line);
 
-#else /* !NORFRENDO_DEBUG */
+#else /* !NOFRENDO_DEBUG */
 
 /* Non-debugging versions of calls */
 #define  malloc(s)   _my_malloc((s))

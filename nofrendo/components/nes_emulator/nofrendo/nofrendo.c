@@ -26,18 +26,17 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-#include "noftypes.h"
-#include "nofrendo.h"
-#include "event.h"
-#include "nofconfig.h"
-#include "log.h"
-#include "osd.h"
-#include "gui.h"
-#include "vid_drv.h"
+#include <noftypes.h>
+#include <nofrendo.h>
+#include <event.h>
+#include <nofconfig.h>
+#include <log.h>
+#include <osd.h>
+#include <gui.h>
+#include <vid_drv.h>
 
 /* emulated system includes */
-#include "nes/nes.h"
+#include <nes.h>
 
 /* our global machine structure */
 static struct
@@ -45,7 +44,7 @@ static struct
    char *filename, *nextfilename;
    system_t type, nexttype;
 
-   union
+   union 
    {
       nes_t *nes;
    } machine;
@@ -129,16 +128,16 @@ static system_t detect_systemtype(const char *filename)
 
    if (0 == nes_isourfile(filename))
       return system_nes;
-
+   
    /* can't figure out what this thing is */
    return system_unknown;
 }
 
 static int install_timer(int hertz)
 {
-   return osd_installtimer(hertz, (void *)timer_isr,
-                           (int)timer_isr_end - (int)timer_isr,
-                           (void *)&nofrendo_ticks,
+   return osd_installtimer(hertz, (void *) timer_isr,
+                           (int) timer_isr_end - (int) timer_isr,
+                           (void *) &nofrendo_ticks, 
                            sizeof(nofrendo_ticks));
 }
 
@@ -224,7 +223,7 @@ int main_loop(const char *filename, system_t type)
    vidinfo_t video;
 
    /* register shutdown, in case of assertions, etc. */
-     atexit(shutdown_everything);
+   atexit(shutdown_everything);
 
    if (config.open())
       return -1;

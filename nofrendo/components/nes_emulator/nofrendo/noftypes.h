@@ -23,8 +23,8 @@
 ** $Id: noftypes.h,v 1.1 2001/04/27 14:37:11 neil Exp $
 */
 
-#ifndef _NOFTYPES_H_
-#define _NOFTYPES_H_
+#ifndef _TYPES_H_
+#define _TYPES_H_
 
 #include <stdbool.h>
 
@@ -38,31 +38,31 @@
 // #define NOFRENDO_DOUBLE_FRAMEBUFFER
 
 /* Define this if running on little-endian (x86) systems */
-#define HOST_LITTLE_ENDIAN
+#define  HOST_LITTLE_ENDIAN
 
 #ifdef __GNUC__
-#define INLINE static inline
-#define ZERO_LENGTH 0
+#define  INLINE      static inline
+#define  ZERO_LENGTH 0
 #elif defined(WIN32)
-#define INLINE static __inline
-#define ZERO_LENGTH 0
+#define  INLINE      static __inline
+#define  ZERO_LENGTH 0
 #else /* crapintosh? */
-#define INLINE static
-#define ZERO_LENGTH 1
+#define  INLINE      static
+#define  ZERO_LENGTH 1
 #endif
 
 /* quell stupid compiler warnings */
-#define UNUSED(x) ((x) = (x))
+#define  UNUSED(x)   ((x) = (x))
 
-typedef signed char int8;
-typedef signed short int16;
-typedef signed int int32;
-typedef unsigned char uint8;
-typedef unsigned short uint16;
-typedef unsigned int uint32;
+typedef  signed char    int8;
+typedef  signed short   int16;
+typedef  signed int     int32;
+typedef  unsigned char  uint8;
+typedef  unsigned short uint16;
+typedef  unsigned int   uint32;
 
-#include "memguard.h"
-#include "log.h"
+#include <memguard.h>
+#include <log.h>
 
 #ifdef NOFRENDO_DEBUG
 
@@ -71,12 +71,12 @@ typedef unsigned int uint32;
 
 #else /* !NOFRENDO_DEBUG */
 
-#define ASSERT(expr)
-#define ASSERT_MSG(msg)
+#define  ASSERT(expr)
+#define  ASSERT_MSG(msg)
 
 #endif /* !NOFRENDO_DEBUG */
 
-#endif /* _NOFTYPES_H_ */
+#endif /* _TYPES_H_ */
 
 /*
 ** $Log: noftypes.h,v $

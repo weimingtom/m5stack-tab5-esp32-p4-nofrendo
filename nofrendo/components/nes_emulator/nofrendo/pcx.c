@@ -32,10 +32,9 @@
 
 #include <stdio.h>
 #include <string.h>
-
-#include "noftypes.h"
-#include "bitmap.h"
-#include "pcx.h"
+#include <noftypes.h>
+#include <bitmap.h>
+#include <pcx.h>
 
 /* Save a PCX snapshot from a given NES bitmap */
 int pcx_write(char *filename, bitmap_t *bmp, rgb_t *pal)
@@ -92,7 +91,8 @@ int pcx_write(char *filename, bitmap_t *bmp, rgb_t *pal)
             last = *mem++;
             xpos++;
             rle_count++;
-         } while (*mem == last && xpos < width && rle_count < 0x3F);
+         }
+         while (*mem == last && xpos < width && rle_count < 0x3F);
 
          if (rle_count > 1 || 0xC0 == (last & 0xC0))
          {
