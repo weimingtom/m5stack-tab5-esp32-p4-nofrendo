@@ -95,8 +95,12 @@ static const char *dataDirectory(void)
          addSlash(temp);
          strncat(temp, ".nofrendo", PATH_MAX - strlen(temp));
 
+#if defined(__MINGW32__)
+         if(!mkdir(temp) || errno == EEXIST)
+#else
          if(!mkdir(temp, 0755) || errno == EEXIST)
-         {
+#endif
+		 {
             log_printf("Succeeded in choosing HOME-based homeDirectory.\n");
             strncpy(dataPath, temp, PATH_MAX);
          }
