@@ -97,6 +97,13 @@ Pia Carrot e Youkoso!!.hdi
 * 立创实战派, 立创·实战派ESP32-S3  
 https://wiki.lckfb.com/zh-hans/szpi-esp32s3/open-source-software/  
 https://wiki.lckfb.com/zh-hans/szpi-esp32s3/beginner/game-console.html  
+* https://www.bilibili.com/video/BV1Khtjz5ENq/    
+https://gitee.com/zhuxinyu114/retro-go-esp32s3    
+https://github.com/LLYY11/esp32s3lcd_retro_go    
+https://makerworld.com.cn/zh/models/1458515-katarinazhang-ji-de-wai-ke#profileId-1587465  
+https://oshwhub.com/bardo/retro-go-esp32s3-2-51-release  
+(dead) https://github.com/wheniseeyouagain/retro-go-esp32s3  
+https://github.com/wheniseeyouagain/retro-go-hack  
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
