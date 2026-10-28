@@ -104,6 +104,7 @@ https://makerworld.com.cn/zh/models/1458515-katarinazhang-ji-de-wai-ke#profileId
 https://oshwhub.com/bardo/retro-go-esp32s3-2-51-release  
 (dead) https://github.com/wheniseeyouagain/retro-go-esp32s3  
 https://github.com/wheniseeyouagain/retro-go-hack  
+* https://github.com/AndyAiCardputer/crowpanel-esp32p4-projects/tree/main/crown_nes  
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
