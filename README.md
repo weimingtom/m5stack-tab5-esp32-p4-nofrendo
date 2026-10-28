@@ -105,6 +105,13 @@ https://oshwhub.com/bardo/retro-go-esp32s3-2-51-release
 (dead) https://github.com/wheniseeyouagain/retro-go-esp32s3  
 https://github.com/wheniseeyouagain/retro-go-hack  
 * https://github.com/AndyAiCardputer/crowpanel-esp32p4-projects/tree/main/crown_nes  
+* GUITION 7inch:    
+https://github.com/wegi1/ESP32P4-JC1060P470C-I_W_Y   
+GUITION 10.1inch:    
+https://github.com/wegi1/ESP32P4-JC8012P4A1C-I_W_Y   
+* Waveshare 10.1inch:  
+https://docs.waveshare.net/ESP32-P4-WIFI6-Touch-LCD-X    
+https://github.com/waveshareteam/ESP32-P4-WIFI6-Touch-LCD-X   
 
 ## tf card, roms/
 * Put .nes file into FAT32 sdcard:\roms\  
