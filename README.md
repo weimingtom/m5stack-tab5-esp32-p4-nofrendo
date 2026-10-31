@@ -125,9 +125,9 @@ https://github.com/waveshareteam/ESP32-P4-WIFI6-Touch-LCD-X
 * Z = A button = Z
 * X = B button = X
 
-## How to build with ESP-IDF 5.4.4
-* cmd
-* cd m5stack-tab5-esp32-p4-nofrendo/
+## How to build with ESP-IDF 5.5.6
+* (ESP-IDF 5.5 PowerShell)
+* cd .\nofrendo\
 * idf.py build
 * idf.py build flash monitor  
 
