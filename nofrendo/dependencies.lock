@@ -34,7 +34,7 @@ dependencies:
   espressif/esp_lcd_st7703:
     dependencies: []
     source:
-      path: D:\Espressif544\frameworks\nofrendo\components\espressif__esp_lcd_st7703
+      path: D:\Espressif\frameworks\nofrendo\components\espressif__esp_lcd_st7703
       type: local
     version: 1.0.5
   espressif/esp_lcd_touch:
@@ -120,7 +120,7 @@ dependencies:
   idf:
     source:
       type: idf
-    version: 5.4.4
+    version: 5.5.6
 direct_dependencies:
 - espressif/cmake_utilities
 - espressif/esp_codec_dev
